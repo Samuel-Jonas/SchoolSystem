@@ -1,4 +1,4 @@
-package PackageGUI;
+package screen;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -8,9 +8,11 @@ import javax.swing.JTextField;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
-import DataBase.ProfessorDAO;
-import ExecuteMain.ExecuteProgram;
-import PackageClasses.Professor;
+
+import database.repository.TeacherDAO;
+import entity.Teacher;
+import start.Program;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.FlowLayout;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TelaProfessor {
+public class TeacherScreen {
 
 	//tabelas
 	public JTable tabelaProf;
@@ -60,14 +62,14 @@ public class TelaProfessor {
 	private JButton btDeletar;
 
     //private Professor guiprofessor;
-	private static Professor PROFESSOR_SELECIONADO;
+	private static Teacher PROFESSOR_SELECIONADO;
 
-	private List <Professor> ListaProf;
+	private List <Teacher> ListaProf;
 
-    public TelaProfessor(){
+    public TeacherScreen(){
         //guiprofessor = new Professor();
-		ProfessorDAO profDAO = new ProfessorDAO();
-		ListaProf = new ArrayList<Professor>(profDAO.listar());
+		TeacherDAO profDAO = new TeacherDAO();
+		ListaProf = new ArrayList<Teacher>(profDAO.listar());
 		modelTableProf = new DefaultTableModel();
 		tabelaProf = new JTable(modelTableProf);
 		
@@ -113,9 +115,9 @@ public class TelaProfessor {
 					PROFESSOR_SELECIONADO.setSalario(Double.parseDouble(txtsalarioProf.getText()));
 					PROFESSOR_SELECIONADO.setEndereco(txtEndeProf.getText());
 					PROFESSOR_SELECIONADO.setFormacao(txtFormProf.getText());
-					new ProfessorDAO().atualizar(PROFESSOR_SELECIONADO);
+					new TeacherDAO().atualizar(PROFESSOR_SELECIONADO);
 				
-					ListaProf = new ArrayList<>(new ProfessorDAO().listar());
+					ListaProf = new ArrayList<>(new TeacherDAO().listar());
 					listarProfessores(modelTableProf);
 				}
 			}
@@ -133,9 +135,9 @@ public class TelaProfessor {
 				int linha = tabelaProf.getSelectedRow(); 
 				int valorColuna = (int) tabelaProf.getValueAt(linha, 0);
 				
-				new ProfessorDAO().remover(valorColuna);
+				new TeacherDAO().remover(valorColuna);
 				
-				ListaProf = new ArrayList<>(new ProfessorDAO().listar());
+				ListaProf = new ArrayList<>(new TeacherDAO().listar());
 				listarProfessores(modelTableProf);
 			}
 		});
@@ -221,7 +223,7 @@ public class TelaProfessor {
 			public void actionPerformed(ActionEvent e) {
 
 				//Abre o menu denovo
-				ExecuteProgram.window.renderizaJanela();
+				Program.window.renderizaJanela();
 				//esconde a janela atual
 				janelaProf.setVisible(false);
 				
@@ -250,10 +252,10 @@ public class TelaProfessor {
 			public void actionPerformed(ActionEvent e) {
 
 				//Criar um objeto (entidade) professor com os dados entrados no JTExtField, o primeiro parametro e um exemplo!
-				Professor pf = new Professor(txtNomeProf.getText(), Integer.parseInt(txtIdadeProf.getText()),
+				Teacher pf = new Teacher(txtNomeProf.getText(), Integer.parseInt(txtIdadeProf.getText()),
 				Double.parseDouble(txtsalarioProf.getText()), txtFormProf.getText(), txtEndeProf.getText());
 				//Quando cirada a classe DAO com o CRUD, basta chamar e executar o inserir passando o objeto pf que e professor.
-				ProfessorDAO pdao = new ProfessorDAO();
+				TeacherDAO pdao = new TeacherDAO();
 				pdao.inserir(pf);
 				ListaProf = new ArrayList<>(pdao.listar());
 				listarProfessores(modelTableProf);

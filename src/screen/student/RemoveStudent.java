@@ -1,10 +1,11 @@
-package PackageGUI.Estudantes;
-
-import PackageClasses.Escola;
+package screen.student;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import entity.School;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -13,8 +14,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaRem {
-	Escola escola;
+public class RemoveStudent {
+	School escola;
     //janela
     private JFrame janela;
 
@@ -31,7 +32,7 @@ public class TelaRem {
 	private JButton btRemover;
     private JButton btVoltar;
 
-	public TelaRem(Escola escola){
+	public RemoveStudent(School escola){
 		this.escola = escola;
 	}
 

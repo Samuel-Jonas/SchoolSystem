@@ -1,10 +1,11 @@
-package PackageGUI.Estudantes;
-
-import PackageClasses.Escola;
-import PackageGUI.TelaMenu;
+package screen.student;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import entity.School;
+import screen.HomeScreen;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
@@ -12,7 +13,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaAluno {
+public class HomeStudent {
     //janela
     private JFrame janela;
 
@@ -67,8 +68,8 @@ public class TelaAluno {
 		janela.setVisible(true);
 	}
 
-    public void addAluno(Escola escola){
-        TelaAdd add = new TelaAdd(escola);
+    public void addAluno(School escola){
+        AddStudent add = new AddStudent(escola);
 		btAddAluno.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -77,8 +78,8 @@ public class TelaAluno {
 		});
 	}
 
-    public void remAluno(Escola escola){
-        TelaRem remover = new TelaRem(escola);
+    public void remAluno(School escola){
+        RemoveStudent remover = new RemoveStudent(escola);
 		btRemAluno.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -87,8 +88,8 @@ public class TelaAluno {
 		});
 	}
 
-	public void mostrarAlunos(Escola escola){
-        TelaMostrar mostrar = new TelaMostrar(escola);
+	public void mostrarAlunos(School escola){
+        ListStudent mostrar = new ListStudent(escola);
 		btMostrarAlunos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -97,8 +98,8 @@ public class TelaAluno {
 		});
 	}
 
-    public void pagarMensalidade(Escola escola){
-        TelaMensalidade mensalidade = new TelaMensalidade(escola);
+    public void pagarMensalidade(School escola){
+        MonthlyPayment mensalidade = new MonthlyPayment(escola);
 		btPagarMensalidade.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -109,7 +110,7 @@ public class TelaAluno {
 
     public void voltar() {
 		btVoltar.addActionListener(new ActionListener() {
-			TelaMenu menu = new TelaMenu();
+			HomeScreen menu = new HomeScreen();
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				menu.renderizaJanela();
@@ -118,7 +119,7 @@ public class TelaAluno {
 		});
 	}
 
-    public void renderizaJanela(Escola escola) {
+    public void renderizaJanela(School escola) {
 		criaComponentes();
 		preparaPaineis();
 		preparaJanela();

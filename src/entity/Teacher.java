@@ -1,11 +1,11 @@
-package PackageClasses;
+package entity;
 
-public class Professor extends Funcionario {
+public class Teacher extends Employee {
 	
 	private String formacao;
 	private int id;
 	
-	public Professor(String nome, int idade, double salario, String formacao, String endereco) {
+	public Teacher(String nome, int idade, double salario, String formacao, String endereco) {
 		super(salario, nome, idade, formacao, endereco);
 		this.formacao = formacao;
 	}

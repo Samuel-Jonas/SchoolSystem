@@ -1,23 +1,23 @@
-package PackageClasses;
+package entity;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class Escola {
+public class School {
 
 	private String nome;
 	private String endereco;
-	private Map<Integer, Professor> professores = new HashMap<Integer, Professor>();
-	private Map<Integer, Funcionario> funcionarios = new HashMap<Integer, Funcionario>();
-	private Map<Integer, Estudante> estudantes = new HashMap<Integer, Estudante>();
+	private Map<Integer, Teacher> professores = new HashMap<Integer, Teacher>();
+	private Map<Integer, Employee> funcionarios = new HashMap<Integer, Employee>();
+	private Map<Integer, Student> estudantes = new HashMap<Integer, Student>();
 
-	public Escola(String nome, String endereco) {
+	public School(String nome, String endereco) {
 		this.setNome(nome);
 		this.setEndereco(endereco);
 	}
 
-	public void addProfessor(Professor professor) {
+	public void addProfessor(Teacher professor) {
 		Random gerador = new Random();
 		int id = gerador.nextInt(10000); 
 		if(professores.get(id) == null){
@@ -27,7 +27,7 @@ public class Escola {
 		}
 		professores.put(professor.getId(),professor);
 	}
-	public void addFuncionario(Funcionario funcionario) {
+	public void addFuncionario(Employee funcionario) {
 		Random gerador = new Random();
 		int id = gerador.nextInt(10000); 
 		if(funcionarios.get(id) == null){
@@ -37,7 +37,7 @@ public class Escola {
 		}
 		funcionarios.put(funcionario.getId(),funcionario);
 	}
-	public void addEstudante(Estudante estudante) {
+	public void addEstudante(Student estudante) {
 		Random gerador = new Random();
 		int id = gerador.nextInt(10000); 
 		if(estudantes.get(id) == null){
@@ -60,10 +60,10 @@ public class Escola {
 	
 	public void pagarSalario(int id, int tipo) {
 		if(tipo == 1){
-			Professor professor = professores.get(id);
+			Teacher professor = professores.get(id);
 			professor.receberSalario();
 		}else{
-			Funcionario funcionario = funcionarios.get(id);
+			Employee funcionario = funcionarios.get(id);
 			funcionario.receberSalario();
 		}
 		
@@ -72,7 +72,7 @@ public class Escola {
 	public Object[][] listarProfessores() {
 		Object[][] tableData = new Object[professores.keySet().size()][6];
 		int index = 0;
-		for(Professor prof: professores.values()){
+		for(Teacher prof: professores.values()){
 			tableData[index][0] = String.valueOf(prof.getId());
 			tableData[index][1] = prof.getNome();
 			tableData[index][2] = String.valueOf(prof.getIdade());
@@ -88,7 +88,7 @@ public class Escola {
 	public Object[][] listarEstudantes() {
 		Object[][] tableData = new Object[estudantes.keySet().size()][6];
 		int index = 0;
-		for(Estudante aluno: estudantes.values()){
+		for(Student aluno: estudantes.values()){
 			tableData[index][0] = String.valueOf(aluno.getId());
 			tableData[index][1] = aluno.getNome();
 			tableData[index][2] = String.valueOf(aluno.getIdade());
@@ -103,7 +103,7 @@ public class Escola {
 	public Object[][] listarFuncionarios() {
 		Object[][] tableData = new Object[funcionarios.keySet().size()][6];
 		int index = 0;
-		for(Funcionario funcionario: funcionarios.values()){
+		for(Employee funcionario: funcionarios.values()){
 			tableData[index][0] = String.valueOf(funcionario.getId());
 			tableData[index][1] = funcionario.getNome();
 			tableData[index][2] = String.valueOf(funcionario.getIdade());
@@ -131,11 +131,11 @@ public class Escola {
 		this.endereco = endereco;
 	}
 	
-	public Estudante getEstudante(int id) {
+	public Student getEstudante(int id) {
 		return estudantes.get(id);
 		
 	}
-	public Funcionario getFuncionario(int id) {
+	public Employee getFuncionario(int id) {
 		return funcionarios.get(id);
 	}
 }

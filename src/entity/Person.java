@@ -1,13 +1,13 @@
-package PackageClasses;
+package entity;
 
-public class Pessoa {
+public class Person {
 	
 	private String nome;
 	private int idade;
 	private int id;
 	private String endereco;
 	
-	public Pessoa(String nome, int idade, String endereco) {
+	public Person(String nome, int idade, String endereco) {
 		this.nome = nome;
 		this.idade = idade;
 		this.endereco = endereco;

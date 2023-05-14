@@ -1,10 +1,10 @@
-package PackageClasses;
+package entity;
 
-public class Estudante extends Pessoa{
+public class Student extends Person{
     private float nota;
-    private Pagamento mensalidade = Pagamento.PENDENTE;
+    private Payment mensalidade = Payment.PENDENTE;
 
-    public Estudante(String nome, String endereco, int idade, float nota){
+    public Student(String nome, String endereco, int idade, float nota){
         super(nome, idade, endereco);
         setNota(nota);
     }
@@ -23,7 +23,7 @@ public class Estudante extends Pessoa{
 
     public int pagarMensalidade(double valor){
         if(valor >= 200){
-            mensalidade = Pagamento.PAGO;
+            mensalidade = Payment.PAGO;
             return 1;
         }
         return 0;

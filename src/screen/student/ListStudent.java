@@ -1,11 +1,12 @@
-package PackageGUI.Estudantes;
-
-import PackageClasses.Escola;
+package screen.student;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import entity.School;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.BoxLayout;
@@ -15,8 +16,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaMostrar {
-	Escola escola;
+public class ListStudent {
+	School escola;
     //janela
     private JFrame janela;
 
@@ -35,7 +36,7 @@ public class TelaMostrar {
     //Botoes
     private JButton btVoltar;
 
-	public TelaMostrar(Escola escola){
+	public ListStudent(School escola){
 		this.escola = escola;
 	}
 

@@ -1,4 +1,4 @@
-package DataBase;
+package database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -13,8 +13,8 @@ public class ConnectionFactory {
     public static Connection getCon() {
         if(con == null){
             String user = "root";
-            String password = "hms2408";
-            String database = "sistema_escola";
+            String password = "LOSfro@#33";
+            String database = "system_school";
             String url = "jdbc:mysql://localhost/"+ database;
             try {
                 con = DriverManager.getConnection(url, user, password);

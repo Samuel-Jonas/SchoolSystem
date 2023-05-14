@@ -1,11 +1,12 @@
-package PackageGUI.Estudantes;
-
-import PackageClasses.Escola;
-import PackageClasses.Estudante;
+package screen.student;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import entity.School;
+import entity.Student;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -14,8 +15,8 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaAdd {
-    Escola escola;
+public class AddStudent {
+    School escola;
 
     //janela
     private JFrame janela;
@@ -41,7 +42,7 @@ public class TelaAdd {
     private JButton btVoltar;
     private JButton btLimpar;
 
-    public TelaAdd(Escola escola){
+    public AddStudent(School escola){
         this.escola = escola;
     }
 
@@ -102,7 +103,7 @@ public class TelaAdd {
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 try{
-                    Estudante estudante = new Estudante(txtNomeAluno.getText(), 
+                    Student estudante = new Student(txtNomeAluno.getText(), 
                                                     txtEnderecoAluno.getText(), 
                                                     Integer.parseInt(txtIdadeAluno.getText()),
                                                     Float.parseFloat(txtNotaAluno.getText())

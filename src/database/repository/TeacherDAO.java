@@ -1,4 +1,4 @@
-package DataBase;
+package database.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,15 +8,16 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import PackageClasses.Professor;
+import database.ConnectionFactory;
+import entity.Teacher;
 
 // Esta classe prcisa implementar um CRUD
-public class ProfessorDAO {
+public class TeacherDAO {
 
-    ArrayList<Professor> listaProf = new ArrayList<Professor>();
+    ArrayList<Teacher> listaProf = new ArrayList<Teacher>();
 
     //este metodo insere no banco os dados do objeto passado por parametro
-    public void inserir(Professor professor) {
+    public void inserir(Teacher professor) {
 
         //abre a conxao com o banco, "NAO ESQUECER DE CONFIGURAR no CONNECTIONFACTORY.JAVA"
         Connection con = ConnectionFactory.getCon();
@@ -50,7 +51,7 @@ public class ProfessorDAO {
         }
     }
 
-    public void atualizar(Professor professor) {
+    public void atualizar(Teacher professor) {
         Connection con = ConnectionFactory.getCon();
         String sql = "UPDATE professor SET nome = ?, idade = ?, salario = ?, endereco = ?, formacao = ? WHERE id = ?";
 
@@ -73,7 +74,7 @@ public class ProfessorDAO {
         }
     }
 
-    public ArrayList<Professor> listar() {
+    public ArrayList<Teacher> listar() {
 
         //abre a conxao com o banco, "NAO ESQUECER DE CONFIGURAR no CONNECTIONFACTORY.JAVA"
         Connection con = ConnectionFactory.getCon();
@@ -94,7 +95,7 @@ public class ProfessorDAO {
             String formacao = query.getString("formacao");
             String endereco = query.getString("endereco");
 
-            Professor prof = new Professor(nome, idade, salario, formacao, endereco);
+            Teacher prof = new Teacher(nome, idade, salario, formacao, endereco);
             prof.setId(id);
             listaProf.add(prof);
                 

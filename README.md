@@ -11,7 +11,5 @@ Entities:
 - Student
 - Employee
 - Payment
-- People
+- Person
 - Teacher
-
-Name of the source code variables in the language used is Brazilian Portuguese.

@@ -1,12 +1,12 @@
-package PackageClasses;
+package entity;
 
-public class Funcionario extends Pessoa {
+public class Employee extends Person {
 	
 	private double salario;
 	private double totalGanho = 0;
 	private String profissao;
 	
-	public Funcionario(double salario, String nome, int idade, String profissao, String endereco) {
+	public Employee(double salario, String nome, int idade, String profissao, String endereco) {
 		super(nome, idade, endereco);
 		this.salario = salario;
 		setProfissao(profissao);

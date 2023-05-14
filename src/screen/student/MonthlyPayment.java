@@ -1,11 +1,12 @@
-package PackageGUI.Estudantes;
-
-import PackageClasses.Escola;
-import PackageClasses.Estudante;
+package screen.student;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import entity.School;
+import entity.Student;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -14,9 +15,9 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaMensalidade {
-	Escola escola;
-	Estudante estudante;
+public class MonthlyPayment {
+	School escola;
+	Student estudante;
 
     //janela
     private JFrame janela;
@@ -38,7 +39,7 @@ public class TelaMensalidade {
 	private JButton btLimpar;
     private JButton btVoltar;
 
-	public TelaMensalidade(Escola escola){
+	public MonthlyPayment(School escola){
 		this.escola = escola;
 	}
 

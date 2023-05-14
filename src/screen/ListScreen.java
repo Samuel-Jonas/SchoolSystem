@@ -1,4 +1,4 @@
-package PackageGUI;
+package screen;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -13,7 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Telas {
+public class ListScreen {
     
     //janela
     private JFrame janela;
@@ -37,7 +37,7 @@ public class Telas {
 
     //private Professor guiprofessor;
 
-    public Telas(){
+    public ListScreen(){
         //guiprofessor = new Professor();
     }
 
@@ -48,7 +48,7 @@ public class Telas {
 		JPprofessor = new JPanel();
 		JPbotoes = new JPanel();
 		
-		JLnomeProf = new JLabel("Digite o some do professor");
+		JLnomeProf = new JLabel("Digite o nome do professor");
 		
 		txtNomeProf = new JTextField(15);
 		

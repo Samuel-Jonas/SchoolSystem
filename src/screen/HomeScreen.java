@@ -1,10 +1,10 @@
-package PackageGUI;
+package screen;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import PackageClasses.Escola;
-import PackageGUI.Estudantes.TelaAluno;
+import entity.School;
+import screen.student.HomeStudent;
 
 import javax.swing.JLabel;
 
@@ -14,9 +14,9 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaMenu {
+public class HomeScreen {
 	//Escola
-	Escola escola;
+	School escola;
 
     //janela
     private JFrame janela;
@@ -35,7 +35,7 @@ public class TelaMenu {
 
     //Instancias de componentes
 	public void criaComponentes() {
-		escola = new Escola("UFC", "RUSSAS");
+		escola = new School("UFC", "RUSSAS");
 		janela = new JFrame("MENU GERAL");
 		
 		JPmenu = new JPanel();
@@ -72,7 +72,7 @@ public class TelaMenu {
 	}
 
     public void escolhaProfessor(){
-        TelaProfessor tela = new TelaProfessor();
+        TeacherScreen tela = new TeacherScreen();
 		btProfessor.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -83,7 +83,7 @@ public class TelaMenu {
 	}
 
     public void escolhaFuncionario(){
-        Telas tela = new Telas();
+        ListScreen tela = new ListScreen();
 		btFuncionario.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -93,8 +93,8 @@ public class TelaMenu {
 		});
 	}
 
-    public void escolhaAluno(Escola escola){
-        TelaAluno telaAluno = new TelaAluno();
+    public void escolhaAluno(School escola){
+        HomeStudent telaAluno = new HomeStudent();
 		btAluno.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -125,7 +125,7 @@ public class TelaMenu {
 	}
 
 	
-    public void renderizaJanela(Escola escola) {
+    public void renderizaJanela(School escola) {
 		criaComponentes();
 		preparaPaineis();
 		preparaJanela();

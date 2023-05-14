@@ -1,4 +1,4 @@
-package PackageGUI;
+package screen;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,7 +10,7 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class TelaFunc {
+public class EmployeeScreen {
 	//janela
 	private JFrame janela;
 
@@ -106,7 +106,7 @@ public class TelaFunc {
 	}
 	
 	public void voltarMenu() {
-		TelaMenu menu = new TelaMenu();
+		HomeScreen menu = new HomeScreen();
 		btVoltar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				menu.renderizaJanela();
