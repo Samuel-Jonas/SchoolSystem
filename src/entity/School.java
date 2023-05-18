@@ -1,78 +1,97 @@
 package entity;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class School {
+public class School extends BaseEntity{
 
-	private String nome;
-	private String endereco;
-	private Map<Integer, Teacher> professores = new HashMap<Integer, Teacher>();
-	private Map<Integer, Employee> funcionarios = new HashMap<Integer, Employee>();
-	private Map<Integer, Student> estudantes = new HashMap<Integer, Student>();
+	private String name;
+	private String address;
+	private Map<Long, Teacher> theachMap = new HashMap<Long, Teacher>();
+	private Map<Long, Employee> employeeMap = new HashMap<Long, Employee>();
+	private Map<Long, Student> studantMap = new HashMap<Long, Student>();
 
-	public School(String nome, String endereco) {
-		this.setNome(nome);
-		this.setEndereco(endereco);
+	public School(String name, String address) {
+		
+		LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = now.format(formatter);
+		
+		this.setNome(name);
+		this.setEndereco(address);
+		this.setCreationDate(formattedDateTime);
 	}
 
-	public void addProfessor(Teacher professor) {
-		Random gerador = new Random();
-		int id = gerador.nextInt(10000); 
-		if(professores.get(id) == null){
-			professor.setId(id);
-		}else{
-			professor.setId(gerador.nextInt(1000));
+	public void addTeacher(Teacher teacher) {
+
+		Random random = new Random();
+		long id = random.nextInt(10000); 
+
+		if (theachMap.get(id) == null) {
+			teacher.setId(id);
+		} else {
+			teacher.setId(random.nextInt(1000));
 		}
-		professores.put(professor.getId(),professor);
+
+		theachMap.put(teacher.getId(),teacher);
 	}
-	public void addFuncionario(Employee funcionario) {
-		Random gerador = new Random();
-		int id = gerador.nextInt(10000); 
-		if(funcionarios.get(id) == null){
-			funcionario.setId(id);
-		}else{
-			funcionario.setId(gerador.nextInt(1000));
+
+	public void addEmployee(Employee employee) {
+
+		Random random = new Random();
+		long id = random.nextInt(10000); 
+
+		if( employeeMap.get(id) == null) {
+			employee.setId(id);
+		} else {
+			employee.setId(random.nextInt(1000));
 		}
-		funcionarios.put(funcionario.getId(),funcionario);
+
+		employeeMap.put(employee.getId(),employee);
 	}
+
 	public void addEstudante(Student estudante) {
-		Random gerador = new Random();
-		int id = gerador.nextInt(10000); 
-		if(estudantes.get(id) == null){
+		Random random = new Random();
+		long id = random.nextInt(10000); 
+
+		if(studantMap.get(id) == null){
 			estudante.setId(id);
 		}else{
-			estudante.setId(gerador.nextInt(1000));
+			estudante.setId(random.nextInt(1000));
 		}
-		estudantes.put(estudante.getId(),estudante);
+		studantMap.put(estudante.getId(),estudante);
 	}
 
-	public void delProfessor(int id) {
-		professores.remove(id);
+	public void delProfessor(long id) {
+		theachMap.remove(id);
 	}
-	public void delFuncionario(int id) {
-		funcionarios.remove(id);
+
+	public void delFuncionario(long id) {
+		employeeMap.remove(id);
 	}
-	public void delEstudante(int id) {
-		estudantes.remove(id);
+
+	public void delEstudante(long id) {
+		studantMap.remove(id);
 	}
 	
-	public void pagarSalario(int id, int tipo) {
+	public void pagarSalario(long id, int tipo) {
 		if(tipo == 1){
-			Teacher professor = professores.get(id);
+			Teacher professor = theachMap.get(id);
 			professor.receberSalario();
 		}else{
-			Employee funcionario = funcionarios.get(id);
+			Employee funcionario = employeeMap.get(id);
 			funcionario.receberSalario();
 		}
 		
 	}
 	
 	public Object[][] listarProfessores() {
-		Object[][] tableData = new Object[professores.keySet().size()][6];
+		Object[][] tableData = new Object[theachMap.keySet().size()][6];
 		int index = 0;
-		for(Teacher prof: professores.values()){
+		for(Teacher prof: theachMap.values()){
 			tableData[index][0] = String.valueOf(prof.getId());
 			tableData[index][1] = prof.getNome();
 			tableData[index][2] = String.valueOf(prof.getIdade());
@@ -86,9 +105,9 @@ public class School {
 	}
 
 	public Object[][] listarEstudantes() {
-		Object[][] tableData = new Object[estudantes.keySet().size()][6];
+		Object[][] tableData = new Object[studantMap.keySet().size()][6];
 		int index = 0;
-		for(Student aluno: estudantes.values()){
+		for(Student aluno: studantMap.values()){
 			tableData[index][0] = String.valueOf(aluno.getId());
 			tableData[index][1] = aluno.getNome();
 			tableData[index][2] = String.valueOf(aluno.getIdade());
@@ -101,9 +120,9 @@ public class School {
 	}
 	
 	public Object[][] listarFuncionarios() {
-		Object[][] tableData = new Object[funcionarios.keySet().size()][6];
+		Object[][] tableData = new Object[employeeMap.keySet().size()][6];
 		int index = 0;
-		for(Employee funcionario: funcionarios.values()){
+		for(Employee funcionario: employeeMap.values()){
 			tableData[index][0] = String.valueOf(funcionario.getId());
 			tableData[index][1] = funcionario.getNome();
 			tableData[index][2] = String.valueOf(funcionario.getIdade());
@@ -116,26 +135,26 @@ public class School {
 	}
 	
 	public String getNome() {
-		return nome;
+		return name;
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.name = nome;
 	}
 
 	public String getEndereco() {
-		return endereco;
+		return address;
 	}
 
 	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+		this.address = endereco;
 	}
 	
-	public Student getEstudante(int id) {
-		return estudantes.get(id);
+	public Student getEstudante(long id) {
+		return studantMap.get(id);
 		
 	}
-	public Employee getFuncionario(int id) {
-		return funcionarios.get(id);
+	public Employee getFuncionario(long id) {
+		return employeeMap.get(id);
 	}
 }

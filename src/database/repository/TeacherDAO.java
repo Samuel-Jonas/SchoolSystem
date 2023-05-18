@@ -11,7 +11,6 @@ import javax.swing.JOptionPane;
 import database.ConnectionFactory;
 import entity.Teacher;
 
-// Esta classe prcisa implementar um CRUD
 public class TeacherDAO {
 
     ArrayList<Teacher> listaProf = new ArrayList<Teacher>();
@@ -63,7 +62,7 @@ public class TeacherDAO {
            stmt.setDouble(3, professor.getSalario());
            stmt.setString(4, professor.getEndereco());
            stmt.setString(5, professor.getFormacao());
-           stmt.setInt(6, professor.getId());
+           stmt.setLong(6, professor.getId());
            stmt.executeUpdate();
 
         } catch (SQLException e) {

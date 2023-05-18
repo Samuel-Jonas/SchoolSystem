@@ -3,7 +3,6 @@ package entity;
 public class Teacher extends Employee {
 	
 	private String formacao;
-	private int id;
 	
 	public Teacher(String nome, int idade, double salario, String formacao, String endereco) {
 		super(salario, nome, idade, formacao, endereco);
@@ -23,12 +22,12 @@ public class Teacher extends Employee {
 		this.formacao = formacao;
 	}
 
-	public int getId() {
-		return id;
+	public long getId() {
+		return super.getId();
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(long id) {
+		super.setId(id);
 	}
 
 }

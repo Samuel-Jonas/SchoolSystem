@@ -1,45 +1,55 @@
 package entity;
 
-public class Person {
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class Person extends BaseEntity{
 	
-	private String nome;
-	private int idade;
-	private int id;
-	private String endereco;
+	private String name;
+	private int age;
+	private String address;
 	
-	public Person(String nome, int idade, String endereco) {
-		this.nome = nome;
-		this.idade = idade;
-		this.endereco = endereco;
+	public Person() { }
+
+	public Person (int id, String name, String address, int age) {
+
+		LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = now.format(formatter);
+
+		this.setId(id);
+		this.name = name;
+		this.address = address;
+		this.age = age;
+		this.setCreationDate(formattedDateTime);
+	}
+
+	public Person(String name, int age, String address) {
+		this.name = name;
+		this.age = age;
+		this.address = address;
 	}
 	
 	public String getNome() {
-		return nome;
+		return name;
 	}
 	
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setNome(String name) {
+		this.name = name;
 	}
 	public int getIdade() {
-		return idade;
+		return age;
 	}
 	
-	public void setIdade(int idade) {
-		this.idade = idade;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getId() {
-		return id;
+	public void setIdade(int age) {
+		this.age = age;
 	}
 	
 	public String getEndereco() {
-		return endereco;
+		return address;
 	}
 	
-	public void setEndereco(String endereco) {
-		this.endereco = endereco;
+	public void setEndereco(String address) {
+		this.address = address;
 	}
 }

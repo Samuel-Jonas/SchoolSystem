@@ -203,7 +203,7 @@ public class TeacherScreen {
 	public void listarProfessores(DefaultTableModel modeloTabela){
 		modeloTabela.setNumRows(0);
 		ListaProf.forEach(professor -> {
-			int id = professor.getId();
+			long id = professor.getId();
 			String nome = professor.getNome();
 			int idade = professor.getIdade();
 			Double salario = professor.getSalario();
