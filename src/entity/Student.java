@@ -21,6 +21,11 @@ public class Student extends Person{
         return mensalidade.toString();
     }
 
+    public void setMensalidade(String paymentStatus) {
+        if (paymentStatus.equals("PAGO"))
+            this.mensalidade = Payment.PAGO;
+    }
+
     public int pagarMensalidade(double valor){
         if(valor >= 200){
             mensalidade = Payment.PAGO;

@@ -72,7 +72,6 @@ public class TeacherScreen {
 		ListaProf = new ArrayList<Teacher>(profDAO.listar());
 		modelTableProf = new DefaultTableModel();
 		tabelaProf = new JTable(modelTableProf);
-		
 
 		for(String coluna : colunas){
 			modelTableProf.addColumn(coluna);
