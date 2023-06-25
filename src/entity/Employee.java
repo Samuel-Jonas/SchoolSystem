@@ -10,6 +10,7 @@ public class Employee extends Person {
 		super(nome, idade, endereco);
 		this.salario = salario;
 		setProfissao(profissao);
+		setCreationDate();
 	}
 
 	public void setProfissao(String profissao){

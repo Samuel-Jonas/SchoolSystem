@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
@@ -21,7 +22,7 @@ public class TeacherDAO {
         //abre a conxao com o banco, "NAO ESQUECER DE CONFIGURAR no CONNECTIONFACTORY.JAVA"
         Connection con = ConnectionFactory.getCon();
         //o codigo sql pra inserir
-        String sql = "INSERT INTO professor (nome, idade, salario, endereco, formacao) VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Teacher (name, age, salary, address, graduation, creationDate) VALUES(?, ?, ?, ?, ?, ?)";
         try {
            //Trata a string e prapara para ser executada com uma query
            PreparedStatement stmt = con.prepareStatement(sql);
@@ -38,6 +39,7 @@ public class TeacherDAO {
             stmt.setDouble(3, professor.getSalario());
             stmt.setString(4, professor.getEndereco());
             stmt.setString(5, professor.getFormacao());
+            stmt.setString(6, LocalDateTime.now().toString());
             stmt.execute();
 
            }
@@ -52,7 +54,7 @@ public class TeacherDAO {
 
     public void atualizar(Teacher professor) {
         Connection con = ConnectionFactory.getCon();
-        String sql = "UPDATE professor SET nome = ?, idade = ?, salario = ?, endereco = ?, formacao = ? WHERE id = ?";
+        String sql = "UPDATE Teacher SET name = ?, age = ?, salary = ?, address = ?, graduation = ? WHERE id = ?";
 
         try {
 
@@ -78,7 +80,7 @@ public class TeacherDAO {
         //abre a conxao com o banco, "NAO ESQUECER DE CONFIGURAR no CONNECTIONFACTORY.JAVA"
         Connection con = ConnectionFactory.getCon();
         //o codigo sql pra inserir
-        String sql = "SELECT * FROM professor";
+        String sql = "SELECT * FROM Teacher";
         try {
             //Trata a string e prapara para ser executada com uma query
            PreparedStatement stmt = con.prepareStatement(sql);
@@ -88,11 +90,11 @@ public class TeacherDAO {
            while(query.next()){
 
             int id = query.getInt("id");
-            String nome = query.getString("nome");
-            int idade = query.getInt("idade");
-            Double salario = query.getDouble("salario");
-            String formacao = query.getString("formacao");
-            String endereco = query.getString("endereco");
+            String nome = query.getString("name");
+            int idade = query.getInt("age");
+            Double salario = query.getDouble("salary");
+            String formacao = query.getString("graduation");
+            String endereco = query.getString("address");
 
             Teacher prof = new Teacher(nome, idade, salario, formacao, endereco);
             prof.setId(id);
@@ -116,7 +118,7 @@ public class TeacherDAO {
         //abre a conxao com o banco, "NAO ESQUECER DE CONFIGURAR no CONNECTIONFACTORY.JAVA"
         Connection con = ConnectionFactory.getCon();
         //o codigo sql pra inserir
-        String sql = "DELETE FROM professor WHERE ID = " + id;
+        String sql = "DELETE FROM Teacher WHERE ID = " + id;
         try {
             //Trata a string e prapara para ser executada com uma query
            PreparedStatement stmt = con.prepareStatement(sql);

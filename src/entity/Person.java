@@ -1,8 +1,5 @@
 package entity;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class Person extends BaseEntity{
 	
 	private String name;
@@ -12,16 +9,11 @@ public class Person extends BaseEntity{
 	public Person() { }
 
 	public Person (int id, String name, String address, int age) {
-
-		LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = now.format(formatter);
-
 		this.setId(id);
 		this.name = name;
 		this.address = address;
 		this.age = age;
-		this.setCreationDate(formattedDateTime);
+		this.setCreationDate();
 	}
 
 	public Person(String name, int age, String address) {

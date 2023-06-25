@@ -29,7 +29,7 @@ public class TeacherScreen {
 	//tabelas
 	public JTable tabelaProf;
 	public DefaultTableModel modelTableProf;
-	private String []colunas = {"id", "nome", "idade", "salario", "endereco", "formacao"};
+	private String []colunas = {"id", "nome", "idade", "salario", "endereco", "formacao", "data de criação"};
     
     //janela
     private JFrame janelaProf;
@@ -146,7 +146,7 @@ public class TeacherScreen {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				int linha = tabelaProf.getSelectedRow();
-				int colunaId = (int) tabelaProf.getValueAt(linha, 0);
+				long colunaId = (long) tabelaProf.getValueAt(linha, 0);
 				PROFESSOR_SELECIONADO = ListaProf.stream().filter(id -> id.getId() == colunaId).findFirst().get();
 
 				//carregar os dados nos campos
@@ -208,9 +208,10 @@ public class TeacherScreen {
 			Double salario = professor.getSalario();
 			String endereco = professor.getEndereco();
 			String formacao = professor.getFormacao();
+			String date = professor.getCreationDate();
 
 			modeloTabela.addRow(new Object []{
-				id, nome, idade, salario, endereco, formacao
+				id, nome, idade, salario, endereco, formacao, date
 			});
 		});
 	}

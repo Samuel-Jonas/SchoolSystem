@@ -1,7 +1,5 @@
 package entity;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -15,14 +13,9 @@ public class School extends BaseEntity{
 	private Map<Long, Student> studantMap = new HashMap<Long, Student>();
 
 	public School(String name, String address) {
-		
-		LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String formattedDateTime = now.format(formatter);
-		
 		this.setNome(name);
 		this.setEndereco(address);
-		this.setCreationDate(formattedDateTime);
+		this.setCreationDate();
 	}
 
 	public void addTeacher(Teacher teacher) {

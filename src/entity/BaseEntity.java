@@ -1,5 +1,8 @@
 package entity;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class BaseEntity {
     private long Id;
     private String CreationDate;
@@ -16,7 +19,15 @@ public class BaseEntity {
         return CreationDate;
     }
 
+    public void setCreationDate() {
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = now.format(formatter);
+        CreationDate = formattedDateTime;
+    }
+
     public void setCreationDate(String creationDate) {
-        CreationDate = creationDate;
+        this.CreationDate = creationDate;
     }
 }
