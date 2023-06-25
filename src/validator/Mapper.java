@@ -1,6 +1,6 @@
 package validator;
 
-import entity.Teacher;
+import model.Teacher;
 
 public class Mapper {
     

@@ -18,7 +18,7 @@ public class Form extends JPanel{
         firstNameField = new JTextField(25);
         lastNameField = new JTextField(25);
 
-        addButton = new JButton("+");
+        addButton = new JButton("Professores");
         addButton.setPreferredSize(new Dimension(278, 40));
 
         viewButton = new JButton("Ver todos");

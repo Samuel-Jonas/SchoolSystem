@@ -8,8 +8,8 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import database.repository.StudentDAO;
-import entity.Payment;
-import entity.Student;
+import model.Payment;
+import model.Student;
 
 import javax.swing.JLabel;
 

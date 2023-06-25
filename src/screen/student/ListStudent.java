@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import entity.School;
+import model.School;
 
 import javax.swing.JLabel;
 import javax.swing.JButton;

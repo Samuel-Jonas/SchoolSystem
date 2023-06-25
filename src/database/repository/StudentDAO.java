@@ -8,9 +8,8 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import entity.Student;
-
 import database.ConnectionFactory;
+import model.Student;
 
 public class StudentDAO {
     

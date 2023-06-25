@@ -3,7 +3,7 @@ package screen.student;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import entity.School;
+import model.School;
 import screen.HomeScreen;
 
 import javax.swing.JLabel;

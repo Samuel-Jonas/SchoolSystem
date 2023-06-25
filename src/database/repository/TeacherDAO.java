@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import database.ConnectionFactory;
-import entity.Teacher;
+import model.Teacher;
 
 public class TeacherDAO {
 

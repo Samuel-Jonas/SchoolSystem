@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import database.ConnectionFactory;
-import entity.User;
+import model.User;
 
 public class UserDAO {
     

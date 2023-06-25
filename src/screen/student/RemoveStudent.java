@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import entity.School;
+import model.School;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;

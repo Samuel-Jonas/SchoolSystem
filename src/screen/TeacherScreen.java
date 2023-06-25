@@ -10,7 +10,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.table.DefaultTableModel;
 
 import database.repository.TeacherDAO;
-import entity.Teacher;
+import model.Teacher;
 import start.Program;
 
 import javax.swing.JLabel;

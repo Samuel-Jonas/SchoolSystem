@@ -2,7 +2,7 @@ package view;
 
 import javax.swing.*;
 
-import controller.UserController;
+import controller.TeacherController;
 
 import java.awt.*;
 
@@ -15,15 +15,17 @@ public class HomeFrame extends JFrame{
         cardLayout = new CardLayout();
         Form form = new Form();
         UserDetails userDetails = new UserDetails();
+        TeacherFrame teacherFrame = new TeacherFrame();
 
         setLayout(cardLayout);
 
-        new UserController(form, userDetails);
+        new TeacherController(teacherFrame);
 
         add(form, "form");
         add(userDetails, "user details");
+        add(teacherFrame, "teacher frame");
 
-        form.viewUsers(e -> cardLayout.show(HomeFrame.this.getContentPane(), "user details"));
+        form.viewUsers(e -> cardLayout.show(HomeFrame.this.getContentPane(), "teacher frame"));
         userDetails.backButton(e -> cardLayout.show(HomeFrame.this.getContentPane(), "form"));
 
         ImageIcon imageIcon = new ImageIcon("src/assets/3314970-middle.png");

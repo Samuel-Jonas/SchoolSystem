@@ -3,7 +3,7 @@ package controller;
 import javax.swing.JOptionPane;
 
 import database.repository.UserDAO;
-import entity.User;
+import model.User;
 import view.Form;
 import view.UserDetails;
 

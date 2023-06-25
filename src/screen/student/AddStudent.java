@@ -4,8 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import entity.School;
-import entity.Student;
+import model.School;
+import model.Student;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
