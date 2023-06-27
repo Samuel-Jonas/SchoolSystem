@@ -4,14 +4,14 @@ import javax.swing.JOptionPane;
 
 import database.repository.TeacherDAO;
 import model.Teacher;
-import view.TeacherFrame;
+import view.TeacherPanel;
 
 public class TeacherController {
 
-    private TeacherFrame teacherFrame;
+    private TeacherPanel teacherFrame;
     private TeacherDAO teacherDAO;
 
-    public TeacherController(TeacherFrame teacherFrame) {
+    public TeacherController(TeacherPanel teacherFrame) {
         this.teacherFrame = teacherFrame;
 
         this.teacherFrame.submitTeacher(e -> {

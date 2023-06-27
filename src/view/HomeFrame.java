@@ -1,42 +1,46 @@
 package view;
 
+import java.awt.CardLayout;
+
 import javax.swing.*;
 
+import components.frames.Frame;
 import controller.TeacherController;
+import factories.GUIFactory;
 
-import java.awt.*;
-
-public class HomeFrame extends JFrame{
+public class HomeFrame {
     CardLayout cardLayout;
 
-    public HomeFrame() {
-        super("Sistema Estudantil");
+    private Frame frame;
+
+    public HomeFrame(GUIFactory factory) {
+        frame = factory.createFrame("Sistema estudantil");
 
         cardLayout = new CardLayout();
         Form form = new Form();
         UserDetails userDetails = new UserDetails();
-        TeacherFrame teacherFrame = new TeacherFrame();
+        TeacherPanel teacherFrame = new TeacherPanel();
 
-        setLayout(cardLayout);
+        frame.setLayout();
 
         new TeacherController(teacherFrame);
 
-        add(form, "form");
-        add(userDetails, "user details");
-        add(teacherFrame, "teacher frame");
+        frame.addComponentsAndConstraints(form, "form");
+        frame.addComponentsAndConstraints(userDetails, "user details");
+        frame.addComponentsAndConstraints(teacherFrame, "teacher frame");
 
-        form.viewUsers(e -> cardLayout.show(HomeFrame.this.getContentPane(), "teacher frame"));
-        userDetails.backButton(e -> cardLayout.show(HomeFrame.this.getContentPane(), "form"));
+        form.viewUsers(e -> cardLayout.show(frame.getContentPane(), "teacher frame"));
+        userDetails.backButton(e -> cardLayout.show(frame.getContentPane(), "form"));
 
         ImageIcon imageIcon = new ImageIcon("src/assets/3314970-middle.png");
 
-        setIconImage(imageIcon.getImage());
+        frame.setIconImage(imageIcon.getImage());
         int FRAME_WIDHT = 1200;
         int FRAME_HEIGHT = 700;
 
-        setSize(FRAME_WIDHT, FRAME_HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+        frame.setSize(FRAME_WIDHT, FRAME_HEIGHT);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
 
     }
 }

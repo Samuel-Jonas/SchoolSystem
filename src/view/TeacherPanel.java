@@ -12,7 +12,7 @@ import java.util.List;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class TeacherFrame extends JPanel{
+public class TeacherPanel extends JPanel{
     
 	private JPanel panelTeacher;
 	private JPanel panelButton;
@@ -36,7 +36,7 @@ public class TeacherFrame extends JPanel{
 
 	private List<Teacher> listTeacher;
 
-    public TeacherFrame() {
+    public TeacherPanel() {
 
 		TeacherDAO teacherDAO = new TeacherDAO();
 		listTeacher = new ArrayList<Teacher>(teacherDAO.listar());

@@ -1,17 +1,15 @@
 package app;
 
-import components.buttons.Button;
 import factories.GUIFactory;
+import view.HomeFrame;
 
 public class Application {
-    
-    private Button button;
 
     public Application(GUIFactory factory) {
-        button = factory.createButton();
+        new HomeFrame(factory);
     }
 
-    public void setSize() {
-        button.setSize();
+    public void start() {
+        
     }
 }
