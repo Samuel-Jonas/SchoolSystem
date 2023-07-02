@@ -1,25 +1,29 @@
 package components.frames;
 
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Image;
+import java.awt.LayoutManager;
 
 public interface Frame {
 
-    void addComponentsAndConstraints(Object component, Object constraint);
+    void addComponentsAndConstraints(Object component, String constraint);
 
     void addComponent(Object component);
 
     void renderFrame();
 
-    void setLayout();
+    void setNewLocationRelativeTo(Component component);
 
-    Container getContentPane();
+    void setNewLayout(LayoutManager layout);
 
-    void setIconImage(Image image);
+    Container getNewContentPane();
 
-    void setDefaultCloseOperation(int operation);
+    void setNewIconImage(Image image);
 
-    void setVisible(boolean value);
+    void setNewDefaultCloseOperation(int operation);
 
-    void setSize(int width, int height);
+    void setNewVisible(boolean value);
+
+    void setNewSize(int width, int height);
 }

@@ -2,20 +2,22 @@ package components.panels;
 
 import javax.swing.JPanel;
 import java.awt.Component;
-import java.awt.GridLayout;
+import java.awt.LayoutManager;
 
 public class MacPanel extends JPanel implements Panel {
 
-    private static JPanel panel = new JPanel();
-
-    @Override
-    public void addComponent(Object component) {
-        panel.add((Component) component);
+    public MacPanel () {
+        new JPanel();
     }
 
     @Override
-    public void setLayout() {
-        panel.setLayout(new GridLayout(6, 1));
+    public void addComponent(Object component) {
+        add((Component) component);
+    }
+
+    @Override
+    public void setNewLayout(LayoutManager layout) {
+        setLayout(layout);
     }
     
 }

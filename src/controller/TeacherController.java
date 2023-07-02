@@ -1,5 +1,7 @@
 package controller;
 
+import java.awt.Component;
+
 import javax.swing.JOptionPane;
 
 import database.repository.TeacherDAO;
@@ -8,39 +10,41 @@ import view.TeacherPanel;
 
 public class TeacherController {
 
-    private TeacherPanel teacherFrame;
     private TeacherDAO teacherDAO;
 
+    private TeacherPanel panel;
+
     public TeacherController(TeacherPanel teacherFrame) {
-        this.teacherFrame = teacherFrame;
 
-        this.teacherFrame.submitTeacher(e -> {
+        panel = teacherFrame;
 
-            String graduation = this.teacherFrame.getTeacherGraduationField();
-            double salary = Double.parseDouble(this.teacherFrame.getTeacherSalaryField());
-            String name = this.teacherFrame.getTeacherNameField();
-            int age = Integer.parseInt(this.teacherFrame.getTeacherAgeField());
-            String address = this.teacherFrame.getTeacherAddressField();
+        panel.submitTeacher(e -> {
+
+            String graduation = this.panel.getTeacherGraduationField();
+            double salary = Double.parseDouble(this.panel.getTeacherSalaryField());
+            String name = this.panel.getTeacherNameField();
+            int age = Integer.parseInt(this.panel.getTeacherAgeField());
+            String address = this.panel.getTeacherAddressField();
 
             if (graduation.isEmpty()) {
-                JOptionPane.showMessageDialog(this.teacherFrame, "Insira o campo formação", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog((Component) teacherFrame.getWindow(), "Insira o campo formação", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
-            } else if (this.teacherFrame.getTeacherSalaryField().isEmpty()) {
-                JOptionPane.showMessageDialog(this.teacherFrame, "Insira o campo salário", "Erro", JOptionPane.ERROR_MESSAGE);
+            } else if (this.panel.getTeacherSalaryField().isEmpty()) {
+                JOptionPane.showMessageDialog((Component) teacherFrame.getWindow(), "Insira o campo salário", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             } else if (name.isEmpty()) {
-                JOptionPane.showMessageDialog(this.teacherFrame, "Insira o campo nome", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog((Component) teacherFrame.getWindow(), "Insira o campo nome", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
-            } else if (this.teacherFrame.getTeacherAgeField().isEmpty()) {
-                JOptionPane.showMessageDialog(this.teacherFrame, "Insira o campo idade", "Erro", JOptionPane.ERROR_MESSAGE);
+            } else if (this.panel.getTeacherAgeField().isEmpty()) {
+                JOptionPane.showMessageDialog((Component) teacherFrame.getWindow(), "Insira o campo idade", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             } else if (address.isEmpty()) {
-                JOptionPane.showMessageDialog(this.teacherFrame, "Insira o campo endereço", "Erro", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog((Component) teacherFrame.getWindow(), "Insira o campo endereço", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
             this.teacherDAO.inserir(new Teacher(graduation, age, salary, name, address));
-            this.teacherFrame.reset();
+            this.panel.reset();
         });
     }
 }
