@@ -10,10 +10,10 @@ public class Employee extends Person {
 	
 	public Employee(double salario, String nome, int idade, String profissao, String endereco) {
 		super(nome, idade, endereco);
+		status = new ActiveState();
 		status.definirSalario(salario);
 		setProfissao(profissao);
 		setCreationDate();
-		setState(new ActiveState());
 	}
 
 	public void setProfissao(String profissao){
