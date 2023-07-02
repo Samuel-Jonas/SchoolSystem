@@ -1,14 +1,17 @@
 package model;
 
+import states.ActiveState;
+import states.EmployeeState;
+
 public class Employee extends Person {
-	
-	private double salario;
-	private double totalGanho = 0;
+
+	public EmployeeState status;
 	private String profissao;
 	
 	public Employee(double salario, String nome, int idade, String profissao, String endereco) {
 		super(nome, idade, endereco);
-		this.salario = salario;
+		status = new ActiveState();
+		status.definirSalario(salario);
 		setProfissao(profissao);
 		setCreationDate();
 	}
@@ -18,21 +21,24 @@ public class Employee extends Person {
 	}
 	
 	public void receberSalario() {
-		this.totalGanho += salario;
+		this.status.receberSalario();
 	}
 
 	public String getProfissao() {
 		return profissao;
 	}
 	public double getSalario() {
-		return salario;
+		return status.verSalario();
 	}
 	public double getTotalGanho() {
-		return totalGanho;
+		return status.verTotalGanho();
 	}
 
 	public void setSalario(double salario) {
-		this.salario = salario;
+		this.status.definirSalario(salario);
 	}
-	
+
+	public void setState(EmployeeState state) {
+        this.status = state;
+    }
 }

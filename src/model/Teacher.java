@@ -1,7 +1,10 @@
 package model;
 
+import states.EmployeeState;
+
 public class Teacher extends Employee {
 	
+	public EmployeeState status;
 	private String formacao;
 	
 	public Teacher(String nome, int idade, double salario, String formacao, String endereco) {
@@ -29,6 +32,5 @@ public class Teacher extends Employee {
 	public void setId(long id) {
 		super.setId(id);
 	}
-
 }
 

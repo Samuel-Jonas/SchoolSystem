@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import states.TerminatedState;
+
 public class School extends BaseEntity{
 
 	private String name;
@@ -59,11 +61,13 @@ public class School extends BaseEntity{
 	}
 
 	public void delProfessor(long id) {
-		theachMap.remove(id);
+		Employee professor = theachMap.get(id);
+		professor.setState(new TerminatedState());
 	}
 
 	public void delFuncionario(long id) {
-		employeeMap.remove(id);
+		Employee funcionario = theachMap.get(id);
+		funcionario.setState(new TerminatedState());
 	}
 
 	public void delEstudante(long id) {
@@ -73,7 +77,7 @@ public class School extends BaseEntity{
 	public void pagarSalario(long id, int tipo) {
 		if(tipo == 1){
 			Teacher professor = theachMap.get(id);
-			professor.receberSalario();
+			professor.status.receberSalario();
 		}else{
 			Employee funcionario = employeeMap.get(id);
 			funcionario.receberSalario();
